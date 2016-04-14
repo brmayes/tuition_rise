@@ -1,6 +1,6 @@
 // Set the dimensions of the canvas / graph
 var margin = {top: 30, right: 20, bottom: 30, left: 50},
-    width = 600 - margin.left - margin.right,
+    width = 700 - margin.left - margin.right,
     height = (270 - margin.top - margin.bottom)*2;
 
 // Parse the date / time
@@ -23,7 +23,10 @@ var costline = d3.svg.line()
     .y(function(d) { return y(d.cost); });
 
 // Adds the svg canvas
-var svg = d3.select(".container")
+var svg = d3.select(".graph-container")
+    // .call(d3.behavior.zoom().on("zoom", function () {
+    //     svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+    //   }))
     .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -33,10 +36,18 @@ var svg = d3.select(".container")
 
 // Get the data
 d3.csv("uni_tuition.csv", function(error, data) {
+
     data.forEach(function(d) {
   		d.date = parseDate(d.date);
   		d.cost = +d.cost;
     });
+
+    var extraInformation = function(d) {
+      // console.log(d);
+      var content = '<h1>' + (d.key).toUpperCase() + '</h1><p>This is information about this uni.</p>';
+
+      return content;
+    }
 
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; }));
@@ -49,25 +60,29 @@ d3.csv("uni_tuition.csv", function(error, data) {
 
     // Loop through each university
     dataNest.forEach(function(d) {
-        svg.append("path")
-            .attr("class", "line")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", "1.5px")
-            .attr("fill", "none")
-            .attr("d", costline(d.values))
-            .on('mouseover', function() {
-              d3.select(d3.event.target)
-                .attr("stroke", "black")
-                .attr("stroke-width", "3px");
-
-              d3.select('h1')
-                .html(d.key);
-            })
-            .on("mouseout", function(d) {
-              d3.select(d3.event.target)
-                .attr('stroke-width', '1.5px')
-                .attr("stroke", "steelblue");
-            });
+      svg.append("path")
+        .attr("class", function() {
+          if (d.key == "nat") {
+            return "line nat";
+          } else {
+            return "line all";
+          }
+        })
+        .attr("d", costline(d.values))
+        .on('mouseover', function() {
+          d3.select(d3.event.target)
+          // d3.select('.extra-info')
+          //   .html( extraInformation(d) );
+        })
+        .on("mouseout", function() {
+          d3.select(d3.event.target)
+            .attr('stroke-width', '1.5px')
+            .attr("stroke", "steelblue");
+        })
+        .on("click", function() {
+          d3.select('.extra-info')
+            .html( extraInformation(d) );
+        });
     });
 
     // Add the X Axis
@@ -82,7 +97,5 @@ d3.csv("uni_tuition.csv", function(error, data) {
         .call(yAxis);
 
 
-        var zoom = d3.behavior.zoom();
-        //selection.call(zoom);
 
 });

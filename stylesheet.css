@@ -13,8 +13,22 @@ body {
   /*display: none;*/
 }
 
+.line {
+  stroke-width: 1.5px;
+  fill: none;
+}
+
+.line.nat {
+  stroke: red;
+}
+
+.line.all {
+  stroke: steelblue;
+}
+
 .line:hover {
   cursor: pointer;
+  stroke-width: 5px;
   /*fill: none;
   stroke: steelblue;
   stroke-width: 1.5px;*/
@@ -26,4 +40,8 @@ body {
 
 rect {
   stroke-width: 2;
+}
+
+.extra-info {
+  font-size: 15px;
 }
