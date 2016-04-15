@@ -45,6 +45,20 @@ h2 {
   margin-top: 7px;
 }
 
+.extra-info {
+  width: 45%;
+  margin: 0 auto;
+  display: block;
+}
+
+.extra-info h4 {
+  text-align: center;
+}
+
+.source {
+  text-align: right;
+}
+
 .ncsu {
   stroke: #CC0000;
 }
@@ -69,7 +83,7 @@ h2 {
   stroke: #003366;
 }
 
-.app {
+.asu {
   stroke: #ffcc00;
 }
 
@@ -103,4 +117,149 @@ h2 {
 
 .ecsu {
   stroke: #0039A6;
+}
+
+.legend {
+  margin: 0 auto;
+  display: block;
+  width: auto;
+}
+
+.legend-boxes {
+  margin-right: 10px;
+}
+
+.ncsu-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #CC0000;
+}
+
+.unc-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #7BAFD4;
+}
+
+.ecu-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #592A8A;
+}
+
+.ncat-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #004684;
+}
+
+.uncc-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #00703C;
+}
+
+.uncg-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #003366;
+}
+
+.asu-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #ffcc00;
+}
+
+.fsu-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #0067B1;
+}
+
+.nccu-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #8b2331;
+}
+
+.uncp-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #BFA656;
+}
+
+.uncw-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #006666;
+}
+
+.wcu-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #592C88;
+}
+
+.wssu-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #ED174F;
+}
+
+.unca-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #003C77;
+}
+
+.ecsu-box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+  background-color: #0039A6;
 }

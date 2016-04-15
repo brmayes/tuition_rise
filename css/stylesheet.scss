@@ -20,7 +20,6 @@ body {
   shape-rendering: crispEdges;
 }
 
-
 .line {
   stroke-width: 2px;
   fill: none;
@@ -52,14 +51,28 @@ h2 {
   margin-top: 7px;
 }
 
+.extra-info {
+  width: 45%;
+  margin: 0 auto;
+  display: block;
 
+  h4 {
+    text-align: center;
+  }
+}
+
+.source {
+  text-align: right;
+}
+
+//for lines
 .ncsu { stroke: #CC0000; }
 .unc { stroke: #7BAFD4; }
 .ecu { stroke: #592A8A; }
 .ncat { stroke: #004684; }
 .uncc { stroke: #00703C; }
 .uncg { stroke: #003366; }
-.app { stroke: #ffcc00; }
+.asu { stroke: #ffcc00; }
 .fsu { stroke: #0067B1; }
 .nccu { stroke: #8b2331; }
 .uncp { stroke: #BFA656; }
@@ -68,3 +81,39 @@ h2 {
 .wssu { stroke: #ED174F; }
 .unca { stroke: #003C77; }
 .ecsu { stroke: #0039A6; }
+
+.legend {
+  margin: 0 auto;
+  display: block;
+  width: auto;
+}
+
+.legend-boxes {
+  // display: inline-block;
+  margin-right: 10px;
+}
+
+@mixin box {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 2px;
+  margin-top: 1px;
+}
+
+//for lines
+.ncsu-box { @include box; background-color: #CC0000; }
+.unc-box { @include box; background-color: #7BAFD4; }
+.ecu-box { @include box; background-color: #592A8A; }
+.ncat-box { @include box; background-color: #004684; }
+.uncc-box { @include box; background-color: #00703C; }
+.uncg-box { @include box; background-color: #003366; }
+.asu-box { @include box; background-color: #ffcc00; }
+.fsu-box { @include box; background-color: #0067B1; }
+.nccu-box { @include box; background-color: #8b2331; }
+.uncp-box { @include box; background-color: #BFA656; }
+.uncw-box { @include box; background-color: #006666; }
+.wcu-box { @include box; background-color: #592C88; }
+.wssu-box { @include box; background-color: #ED174F; }
+.unca-box { @include box; background-color: #003C77; }
+.ecsu-box { @include box; background-color: #0039A6; }
