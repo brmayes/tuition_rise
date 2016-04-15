@@ -120,8 +120,8 @@ d3.csv("js/uni_tuition.csv", function(error, data) {
         .call(xAxis);
 
     svg.append("text")      // text label for the x axis
-        .attr("x", width / 2 - 5 )
-        .attr("y",  height + margin.bottom + 5)
+        .attr("x", width + 3)
+        .attr("y",  height + margin.bottom - 10)
         .style("text-anchor", "middle")
         .text("Year");
 
@@ -131,8 +131,7 @@ d3.csv("js/uni_tuition.csv", function(error, data) {
         .call(yAxis);
 
 
-    svg.append("text")
-        // .attr("transform", "rotate(-90)")
+    svg.append("text") // text label for the y axis
         .attr("x", -54)
         .attr("y", -10)
         .text("Value ($)");
