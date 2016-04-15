@@ -40,6 +40,7 @@ svg {
 .line:hover {
   cursor: pointer;
   stroke-width: 3.5px;
+  transition: all .5s;
 }
 
 .legend {
@@ -57,6 +58,8 @@ rect {
 
 h2 {
   margin-top: 7px;
+  font-size: 25px;
+  color: #545454;
 }
 
 .extra-info {
@@ -71,6 +74,10 @@ h2 {
     display: inline-block;
     width: 33%;
   }
+}
+
+.natQF {
+  text-align: center;
 }
 
 .source {
@@ -115,7 +122,6 @@ h2 {
 }
 
 .legend-boxes {
-  // display: inline-block;
   margin-right: 10px;
 }
 
@@ -144,9 +150,17 @@ h2 {
 .unca-box { @include box; background-color: #003C77; }
 .ecsu-box { @include box; background-color: #0039A6; }
 
+.footer {
+  margin-top: 45px;
+  text-align: center;
+  color: #545454;
+}
 
-// @media (min-width: 1200px) {
-//   .container {
-//       width: 970px;
-//   }
-// }
+a {
+  color: #003C77;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

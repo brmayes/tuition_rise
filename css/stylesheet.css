@@ -34,6 +34,7 @@ svg {
 .line:hover {
   cursor: pointer;
   stroke-width: 3.5px;
+  transition: all .5s;
 }
 
 .legend {
@@ -51,6 +52,8 @@ rect {
 
 h2 {
   margin-top: 7px;
+  font-size: 25px;
+  color: #545454;
 }
 
 .extra-info {
@@ -66,6 +69,10 @@ h2 {
 .extra-info p {
   display: inline-block;
   width: 33%;
+}
+
+.natQF {
+  text-align: center;
 }
 
 .source {
@@ -289,4 +296,19 @@ h2 {
   margin-right: 2px;
   margin-top: 1px;
   background-color: #0039A6;
+}
+
+.footer {
+  margin-top: 45px;
+  text-align: center;
+  color: #545454;
+}
+
+a {
+  color: #003C77;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none;
 }

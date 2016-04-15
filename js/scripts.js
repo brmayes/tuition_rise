@@ -27,8 +27,6 @@ var zoom = d3.behavior.zoom();
 //color category
 var color = d3.scale.category20b();
 
-
-
 // Adds the svg canvas
 var svg = d3.select(".graph-container")
     // creates zoom behavior
@@ -51,36 +49,20 @@ d3.csv("js/uni_tuition.csv", function(error, data) {
     });
 
     var extraInformation = function(d) {
-      // console.log(d.values[0].cost.toLocaleString());
+      // builds content for qf
       var content = "";
       console.log(d);
       content += '<h4>' + (d.key).toUpperCase() + '</h4>';
-      content += '<p><span class="bold">Cost in the 2004-05 school year: </span>' + d.values[0].cost.toLocaleString() + '</p>';
-      content += '<p><span class="bold">Cost in the 20015-16 school year: </span>' + d.values[11].cost.toLocaleString() + '</p>';
+      content += '<p><span class="bold">Cost in the 2004-05 school year: </span>$' + d.values[0].cost.toLocaleString() + '</p>';
+      content += '<p><span class="bold">Cost in the 20015-16 school year: </span>$' + d.values[11].cost.toLocaleString() + '</p>';
       content += '<p><span class="bold">Percent of change: </span>' + (((d.values[11].cost - d.values[0].cost) / (d.values[0].cost))*100).toLocaleString() + '%</p>';
       return content;
     }
 
+    //returns css with line color
     var colorLine = function(d) {
       var lineColor = d.key;
       return lineColor;
-    }
-
-    var activeLine = function() {
-      if (natLine == true) {
-        show = true;
-      } else if (natLine == false) {
-        show = false;
-      }
-    }
-
-    var opacity = function() {
-      if (show == true) {
-        newOpacity = 1;
-      } else if (show == false) {
-        newOpacity = 0;
-      }
-      return newOpacity;
     }
 
     // Scale the range of the data
@@ -124,6 +106,7 @@ d3.csv("js/uni_tuition.csv", function(error, data) {
             .attr('stroke-width', '1.5px')
         })
         .on("click", function() {
+          //shows extra information
           d3.select('#extra-info')
             .html( extraInformation(d) );
         });
@@ -145,6 +128,12 @@ d3.csv("js/uni_tuition.csv", function(error, data) {
 
 //resets the initial extra info div on link click
 function natAvg() {
-    var nat = "National average";
-    document.getElementById("extra-info").innerHTML = nat;
+  var nat = "";
+  var year04 = 6253;
+  var year16 = 9410;
+  nat += '<h4>National Quickfacts</h4>';
+  nat += '<p><span class="bold">Cost in the 2004-05 school year: </span>$' + year04.toLocaleString() + '</p>';
+  nat += '<p><span class="bold">Cost in the 2015-16 school year: </span>$' + year16.toLocaleString() + '</p>';
+  nat += '<p><span class="bold">Percent of change: </span>' + (((year16 - year04) / (year04))*100).toLocaleString() + '%</p>';
+  document.getElementById("extra-info").innerHTML = nat;
 }
