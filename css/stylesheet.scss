@@ -1,0 +1,62 @@
+$teal: #004551;
+$maroon: #82260d;
+$orange: #9d4700;
+$cream: #ead9c9;
+$black: #12110f;
+
+body {
+  font: 10px "cabin", sans-serif;
+  /*background-color: #004551;*/
+}
+
+.container {
+  /*background: white;*/
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: $black;
+  shape-rendering: crispEdges;
+}
+
+
+.line {
+  stroke-width: 1px;
+  fill: none;
+}
+
+.line.nat {
+  stroke: $orange;
+}
+
+.line.all {
+  stroke: $teal;
+}
+
+.line:hover {
+  cursor: pointer;
+  stroke-width: 3px;
+}
+
+.legend {
+  font-size: 12px;
+}
+
+rect {
+  stroke-width: 2;
+}
+
+.extra-info {
+  font-size: 15px;
+}
+
+.arthead {
+  margin-top: 20px;
+  width: 60%;
+}
+
+h3 {
+  font-size: 14px;
+  margin-top: 7px;
+}
