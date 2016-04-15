@@ -1,7 +1,7 @@
 // Set the dimensions of the canvas / graph
 var margin = {top: 30, right: 20, bottom: 30, left: 70},
     width = 900 - margin.left - margin.right,
-    height = (270 - margin.top - margin.bottom)*2.3;
+    height = (270 - margin.top - margin.bottom)*2.5;
 
 // Parse the date / time
 var parseDate = d3.time.format("%b %Y").parse;
@@ -35,7 +35,7 @@ var svg = d3.select(".graph-container")
     //   }))
     .append("svg")
         .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("height", height + margin.top + 25 + margin.bottom)
     .append("g")
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
@@ -119,10 +119,23 @@ d3.csv("js/uni_tuition.csv", function(error, data) {
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
 
+    svg.append("text")      // text label for the x axis
+        .attr("x", width / 2 - 5 )
+        .attr("y",  height + margin.bottom + 5)
+        .style("text-anchor", "middle")
+        .text("Year");
+
     // Add the Y Axis
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis);
+
+
+    svg.append("text")
+        // .attr("transform", "rotate(-90)")
+        .attr("x", -54)
+        .attr("y", -10)
+        .text("Value ($)");
 
 });
 
