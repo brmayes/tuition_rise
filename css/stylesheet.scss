@@ -6,11 +6,23 @@ $black: #12110f;
 
 body {
   font: 15px "cabin", sans-serif;
-  /*background-color: #004551;*/
 }
 
 .container {
-  /*background: white;*/
+  width: 970px !important;
+}
+
+svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.graph-title {
+  text-align: center;
 }
 
 .axis path,
@@ -38,10 +50,6 @@ rect {
   stroke-width: 2;
 }
 
-.extra-info {
-  font-size: 15px;
-}
-
 .arthead {
   margin-top: 20px;
   width: 60%;
@@ -52,12 +60,16 @@ h2 {
 }
 
 .extra-info {
-  width: 45%;
+  font-size: 15px;
   margin: 0 auto;
   display: block;
 
   h4 {
     text-align: center;
+  }
+  p {
+    display: inline-block;
+    width: 33%;
   }
 }
 
@@ -84,8 +96,22 @@ h2 {
 
 .legend {
   margin: 0 auto;
-  display: block;
-  width: auto;
+  display: inline-block;
+  width: 88%;
+}
+
+.legend-div {
+  p {
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 3px;
+  }
+
+  width: 20%;
+  margin: 0 auto;
+  position: absolute;
+  margin-left: 130px;
+  margin-top: 50px;
 }
 
 .legend-boxes {
@@ -117,3 +143,10 @@ h2 {
 .wssu-box { @include box; background-color: #ED174F; }
 .unca-box { @include box; background-color: #003C77; }
 .ecsu-box { @include box; background-color: #0039A6; }
+
+
+// @media (min-width: 1200px) {
+//   .container {
+//       width: 970px;
+//   }
+// }

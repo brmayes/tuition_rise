@@ -1,5 +1,5 @@
 // Set the dimensions of the canvas / graph
-var margin = {top: 30, right: 20, bottom: 30, left: 50},
+var margin = {top: 30, right: 20, bottom: 30, left: 70},
     width = 900 - margin.left - margin.right,
     height = (270 - margin.top - margin.bottom)*2.3;
 
@@ -27,10 +27,12 @@ var zoom = d3.behavior.zoom();
 //color category
 var color = d3.scale.category20b();
 
+
+
 // Adds the svg canvas
 var svg = d3.select(".graph-container")
-    //creates zoom behavior
-    // .call(zoom.on("zoom", function () {
+    // creates zoom behavior
+    // .call(d3.behavior.zoom().on("zoom", function () {
     //     svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
     //   }))
     .append("svg")
@@ -49,7 +51,13 @@ d3.csv("js/uni_tuition.csv", function(error, data) {
     });
 
     var extraInformation = function(d) {
-      var content = '<h4>' + (d.key).toUpperCase() + '</h4><p>This is information about this uni.</p>';
+      // console.log(d.values[0].cost.toLocaleString());
+      var content = "";
+      console.log(d);
+      content += '<h4>' + (d.key).toUpperCase() + '</h4>';
+      content += '<p><span class="bold">Cost in the 2004-05 school year: </span>' + d.values[0].cost.toLocaleString() + '</p>';
+      content += '<p><span class="bold">Cost in the 20015-16 school year: </span>' + d.values[11].cost.toLocaleString() + '</p>';
+      content += '<p><span class="bold">Percent of change: </span>' + (((d.values[11].cost - d.values[0].cost) / (d.values[0].cost))*100).toLocaleString() + '%</p>';
       return content;
     }
 
@@ -108,9 +116,6 @@ d3.csv("js/uni_tuition.csv", function(error, data) {
           }
         })
         .attr("d", costline(d.values))
-        // .style("stroke", function() {
-        //   return d.color = color(d.key);
-        // })
         .on('mouseover', function() {
           d3.select(d3.event.target)
         })
