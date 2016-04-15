@@ -5,7 +5,7 @@ $cream: #ead9c9;
 $black: #12110f;
 
 body {
-  font: 10px "cabin", sans-serif;
+  font: 15px "cabin", sans-serif;
   /*background-color: #004551;*/
 }
 
@@ -22,21 +22,13 @@ body {
 
 
 .line {
-  stroke-width: 1px;
+  stroke-width: 2px;
   fill: none;
-}
-
-.line.nat {
-  stroke: $orange;
-}
-
-.line.all {
-  stroke: $teal;
 }
 
 .line:hover {
   cursor: pointer;
-  stroke-width: 3px;
+  stroke-width: 3.5px;
 }
 
 .legend {
@@ -56,7 +48,23 @@ rect {
   width: 60%;
 }
 
-h3 {
-  font-size: 14px;
+h2 {
   margin-top: 7px;
 }
+
+
+.ncsu { stroke: #CC0000; }
+.unc { stroke: #7BAFD4; }
+.ecu { stroke: #592A8A; }
+.ncat { stroke: #004684; }
+.uncc { stroke: #00703C; }
+.uncg { stroke: #003366; }
+.app { stroke: #ffcc00; }
+.fsu { stroke: #0067B1; }
+.nccu { stroke: #8b2331; }
+.uncp { stroke: #BFA656; }
+.uncw { stroke: #006666; }
+.wcu { stroke: #592C88; }
+.wssu { stroke: #ED174F; }
+.unca { stroke: #003C77; }
+.ecsu { stroke: #0039A6; }

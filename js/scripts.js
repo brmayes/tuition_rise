@@ -1,6 +1,6 @@
 // Set the dimensions of the canvas / graph
 var margin = {top: 30, right: 20, bottom: 30, left: 50},
-    width = 700 - margin.left - margin.right,
+    width = 900 - margin.left - margin.right,
     height = (270 - margin.top - margin.bottom)*2.3;
 
 // Parse the date / time
@@ -13,7 +13,6 @@ var y = d3.scale.linear().range([height, 0]);
 // Define the axes
 var xAxis = d3.svg.axis().scale(x)
     .orient("bottom").ticks(20);
-
 var yAxis = d3.svg.axis().scale(y)
     .orient("left").ticks(8).tickFormat(function(d) { return "$" + d} );
 
@@ -22,9 +21,16 @@ var costline = d3.svg.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.cost); });
 
+//Define the zoom
+var zoom = d3.behavior.zoom();
+
+//color category
+var color = d3.scale.category20b();
+
 // Adds the svg canvas
 var svg = d3.select(".graph-container")
-    // .call(d3.behavior.zoom().on("zoom", function () {
+    //creates zoom behavior
+    // .call(zoom.on("zoom", function () {
     //     svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
     //   }))
     .append("svg")
@@ -34,24 +40,6 @@ var svg = d3.select(".graph-container")
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
 
-var colors =
-[["nccu", "#CC0000"],
-["unc", "#7BAFD4"],
-["ecu", "#592A8A"],
-["ncat", "#004684"],
-["uncc", "#00703C"],
-["uncg", "#003366"],
-["app", "#ffcc00"],
-["fsu", "#0067B1"],
-["nccu", "#8b2331"],
-["uncp", "#BFA656"],
-["uncw", "#006666"],
-["wcu", "#592C88"],
-["wssu", "#ED174F"],
-["unca", "#003C77"],
-["ecsu", "#0039A6"]];
-
-console.log(colors);
 // Get the data
 d3.csv("js/uni_tuition.csv", function(error, data) {
 
@@ -61,8 +49,13 @@ d3.csv("js/uni_tuition.csv", function(error, data) {
     });
 
     var extraInformation = function(d) {
-      var content = '<h1>' + (d.key).toUpperCase() + '</h1><p>This is information about this uni.</p>';
+      var content = '<h4>' + (d.key).toUpperCase() + '</h4><p>This is information about this uni.</p>';
       return content;
+    }
+
+    var colorLine = function(d) {
+      var lineColor = d.key;
+      return lineColor;
     }
 
     var activeLine = function() {
@@ -94,19 +87,30 @@ d3.csv("js/uni_tuition.csv", function(error, data) {
     // Loop through each university
     dataNest.forEach(function(d) {
       svg.append("path")
+        // .attr("class", "line all")
         .attr("class", function() {
-          if (d.key == "nat") {
-            return "line nat";
-          } else {
-            return "line all";
-          }
-        })
-        .attr("id", function() {
-          if (d.key == "nat") {
-            return "#natLine";
+          switch (d.key) {
+            case "ncsu": return "line ncsu"; break;
+            case "unc": return "line unc"; break;
+            case "ecu": return "line ecu"; break;
+            case "ncat": return "line ncat"; break;
+            case "uncc": return "line uncc"; break;
+            case "uncg": return "line uncg"; break;
+            case "uncp": return "line uncp"; break;
+            case "unca": return "line unca"; break;
+            case "ecsu": return "line ecsu"; break;
+            case "wssu": return "line wssu"; break;
+            case "asu": return "line asu"; break;
+            case "fsu": return "line fsu"; break;
+            case "nccu": return "line nccu"; break;
+            case "uncw": return "line uncw"; break;
+            case "wcu": return "line wcu"; break;
           }
         })
         .attr("d", costline(d.values))
+        // .style("stroke", function() {
+        //   return d.color = color(d.key);
+        // })
         .on('mouseover', function() {
           d3.select(d3.event.target)
         })
@@ -115,20 +119,9 @@ d3.csv("js/uni_tuition.csv", function(error, data) {
             .attr('stroke-width', '1.5px')
         })
         .on("click", function() {
-          d3.select('.extra-info')
+          d3.select('#extra-info')
             .html( extraInformation(d) );
         });
-
-        // Add the red line title
-        svg.append("text")
-          .attr("x", 0)
-          .attr("y", margin.top + 30)
-          .attr("class", "legend")
-          .style("fill", "red")
-          .on("mousein", function(){
-            d3.select(d3.event.target)
-            .text( "hi" );
-          })
 
     });
 
@@ -144,3 +137,26 @@ d3.csv("js/uni_tuition.csv", function(error, data) {
         .call(yAxis);
 
 });
+
+//resets the initial extra info div on link click
+function natAvg() {
+    var nat = "National average";
+    document.getElementById("extra-info").innerHTML = nat;
+}
+
+var colors =
+  [["nccu", "#CC0000"],
+  ["unc", "#7BAFD4"],
+  ["ecu", "#592A8A"],
+  ["ncat", "#004684"],
+  ["uncc", "#00703C"],
+  ["uncg", "#003366"],
+  ["app", "#ffcc00"],
+  ["fsu", "#0067B1"],
+  ["nccu", "#8b2331"],
+  ["uncp", "#BFA656"],
+  ["uncw", "#006666"],
+  ["wcu", "#592C88"],
+  ["wssu", "#ED174F"],
+  ["unca", "#003C77"],
+  ["ecsu", "#0039A6"]];
